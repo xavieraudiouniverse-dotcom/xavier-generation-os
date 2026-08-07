@@ -113,3 +113,19 @@ export function hasAccess(tier: TierId | null | undefined, status: string | null
   if (tier === "founder") return true;
   return TIER_RANK[tier] > 0 && status === "active";
 }
+
+export type TierLimits = {
+  maxResolution: "720p" | "1080p" | "4K";
+  watermark: boolean;
+  aiActionsPerDay: number;
+  storageGb: number;
+};
+
+export const TIER_LIMITS: Record<TierId, TierLimits> = {
+  none: { maxResolution: "720p", watermark: true, aiActionsPerDay: 0, storageGb: 0 },
+  starter: { maxResolution: "1080p", watermark: true, aiActionsPerDay: 10, storageGb: 10 },
+  creator: { maxResolution: "1080p", watermark: false, aiActionsPerDay: 100, storageGb: 100 },
+  pro: { maxResolution: "4K", watermark: false, aiActionsPerDay: 1000, storageGb: 500 },
+  studio: { maxResolution: "4K", watermark: false, aiActionsPerDay: 100000, storageGb: 2000 },
+  founder: { maxResolution: "4K", watermark: false, aiActionsPerDay: 100000, storageGb: 5000 },
+};
