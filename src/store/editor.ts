@@ -18,7 +18,7 @@ export type Clip = {
   duration: number;
   speed: number;
   accent: "neon" | "magenta" | "gold";
-  waveform?: number[];
+  waveform?: number[] | undefined;
   keyframes: Keyframe[];
 };
 
