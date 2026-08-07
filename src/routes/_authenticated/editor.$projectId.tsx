@@ -68,10 +68,10 @@ function Editor() {
       setReady(true);
       const { data: m } = await supabase
         .from("media")
-        .select("id,name,kind")
+        .select("id,name,type")
         .eq("project_id", projectId)
         .order("created_at", { ascending: false });
-      if (active && m) setMedia(m);
+      if (active && m) setMedia(m.map((x) => ({ id: x.id, name: x.name ?? "Untitled", kind: x.type ?? "video" })));
     })();
     return () => {
       active = false;
@@ -163,10 +163,10 @@ function Editor() {
     const kind = file.type.startsWith("video") ? "video" : file.type.startsWith("audio") ? "audio" : "image";
     const { data } = await supabase
       .from("media")
-      .insert({ project_id: projectId, user_id: profile.id, name: file.name, kind, storage_path: path, size_bytes: file.size })
-      .select("id,name,kind")
+      .insert({ project_id: projectId, user_id: profile.id, name: file.name, type: kind, url: path })
+      .select("id,name,type")
       .single();
-    if (data) setMedia((m) => [data, ...m]);
+    if (data) setMedia((m) => [{ id: data.id, name: data.name ?? file.name, kind: data.type ?? kind }, ...m]);
     setUploading(false);
     toast.success(`${file.name} added to bin.`);
   };
@@ -344,7 +344,7 @@ function Editor() {
       </div>
 
       {exporting && (
-        <ExportDialog projectId={projectId} tier={profile?.tier ?? "none"} onClose={() => setExporting(false)} />
+        <ExportDialog projectId={projectId} userId={profile?.id ?? ""} tier={profile?.tier ?? "none"} onClose={() => setExporting(false)} />
       )}
     </div>
   );

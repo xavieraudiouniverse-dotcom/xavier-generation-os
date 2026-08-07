@@ -8,8 +8,8 @@ const RESOLUTIONS = ["720p", "1080p", "4K"] as const;
 const FORMATS = ["MP4", "MOV", "WEBM", "GIF"] as const;
 
 export function ExportDialog({
-  projectId, tier, onClose,
-}: { projectId: string; tier: TierId; onClose: () => void }) {
+  projectId, userId, tier, onClose,
+}: { projectId: string; userId: string; tier: TierId; onClose: () => void }) {
   const limits = TIER_LIMITS[tier];
   const [resolution, setResolution] = useState<string>(limits.maxResolution);
   const [format, setFormat] = useState<string>("MP4");
@@ -26,7 +26,7 @@ export function ExportDialog({
     setProgress(0);
     const { data } = await supabase
       .from("exports")
-      .insert({ project_id: projectId, resolution, format, status: "processing" })
+      .insert({ project_id: projectId, user_id: userId, resolution, format, status: "processing" })
       .select("id")
       .single();
 
@@ -35,7 +35,7 @@ export function ExportDialog({
       await new Promise((r) => setTimeout(r, 90));
     }
     if (data) {
-      await supabase.from("exports").update({ status: "complete", progress: 100 }).eq("id", data.id);
+      await supabase.from("exports").update({ status: "complete" }).eq("id", data.id);
     }
     toast.success(`Export complete — ${resolution} ${format}${limits.watermark ? " (watermarked)" : ""}`);
     setProgress(null);
