@@ -54,6 +54,7 @@ function PreviewPlayer({
         controls={showControls}
         loop
         autoPlay={!showControls}
+        {...(showControls ? {} : { initiallyMuted: true })}
       />
     </div>
   );
@@ -167,6 +168,7 @@ function Studio({
       URL.revokeObjectURL(url);
       toast.success("Rendered in your browser — no server needed.");
     } catch (e) {
+      console.error("[remotion-export]", e);
       toast.error(e instanceof Error ? e.message : "Browser render failed.");
     } finally {
       setRendering(false);
