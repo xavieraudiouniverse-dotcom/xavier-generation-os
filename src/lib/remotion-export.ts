@@ -30,6 +30,8 @@ function inlineStyles(source: Element, clone: Element) {
 async function rasterize(el: HTMLElement, width: number, height: number, canvas: HTMLCanvasElement) {
   const clone = el.cloneNode(true) as HTMLElement;
   inlineStyles(el, clone);
+  // Media elements can't be serialised into an SVG and make the canvas non-origin-clean.
+  clone.querySelectorAll("audio, video, iframe, canvas, script, link").forEach((n) => n.remove());
   clone.style.width = `${el.clientWidth}px`;
   clone.style.height = `${el.clientHeight}px`;
   clone.style.transform = "none";
