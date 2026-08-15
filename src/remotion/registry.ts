@@ -512,7 +512,7 @@ export const REMOTION_TEMPLATES: RemotionTemplate[] = [
       COLOR,
       BG,
     ],
-    defaults: { value: 1000000, prefix: "", suffix: "+", label: "TEMPLATES IN THE LIBRARY", fontSize: 130, accent: "#00D4FF", background: "#080808" },
+    defaults: { value: 128, prefix: "", suffix: "+", label: "HOURS SAVED", fontSize: 130, accent: "#00D4FF", background: "#080808" },
     clientRenderable: true,
     source: SRC.tiktok,
   },
