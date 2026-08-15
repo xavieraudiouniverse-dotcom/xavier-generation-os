@@ -217,6 +217,29 @@ function AiVideo() {
             ))}
           </div>
 
+          <div className="mt-4">
+            <span className="text-xs text-muted-foreground">Model</span>
+            <div className="mt-1.5 grid gap-2 sm:grid-cols-2">
+              {(["veo", "seedance"] as const).map((m) => (
+                <button
+                  key={m}
+                  onClick={() => setModel(m)}
+                  disabled={generating}
+                  className={`rounded-md border px-3 py-2 text-left text-xs transition-colors ${
+                    model === m
+                      ? "border-neon/60 bg-neon/10 text-foreground"
+                      : "border-border text-muted-foreground hover:border-neon/40"
+                  }`}
+                >
+                  <span className="block font-semibold">{MODEL_LABEL[m].split(" (")[0]}</span>
+                  <span className="block text-[11px] opacity-70">
+                    {m === "veo" ? "Google · cinematic with sound" : "ByteDance · fast, stylized motion"}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <div className="mt-4 grid grid-cols-2 gap-3">
             <div>
               <span className="text-xs text-muted-foreground">Format</span>
@@ -282,7 +305,7 @@ function AiVideo() {
                     transition={{ ease: "easeOut", duration: 0.6 }}
                   />
                 </div>
-                <p className="mt-3 text-sm text-foreground">Rendering your shot…</p>
+              <p className="mt-3 text-sm text-foreground">Rendering with {MODEL_LABEL[model]}…</p>
                 <p className="mt-1 text-xs text-muted-foreground">
                   {elapsed}s elapsed · keep this tab open
                 </p>
@@ -298,7 +321,12 @@ function AiVideo() {
                   orientation === "portrait" ? "mx-auto max-h-[520px] w-auto" : ""
                 }`}
               />
-              <p className="mt-3 line-clamp-2 text-xs text-muted-foreground">{donePrompt}</p>
+              <div className="mt-3 flex items-start gap-2">
+                <span className="shrink-0 rounded-full border border-neon/40 bg-neon/10 px-2 py-0.5 text-[11px] font-medium text-neon">
+                  {MODEL_LABEL[doneModel]}
+                </span>
+                <p className="line-clamp-2 text-xs text-muted-foreground">{donePrompt}</p>
+              </div>
               <div className="mt-auto flex flex-col gap-3 pt-4 sm:flex-row sm:items-center">
                 <select
                   value={projectId}
