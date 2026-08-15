@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Logo } from "@/components/app/Logo";
 import { useAuth } from "@/hooks/useAuth";
+import { redeemAdminCode } from "@/lib/admin-code.functions";
 
 const searchSchema = z.object({
   mode: z.enum(["login", "register"]).optional(),
