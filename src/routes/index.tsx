@@ -121,9 +121,9 @@ function Landing() {
               <span className="text-gradient-neon">Hollywood director.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              XAVIER CUT PRO is an AI editing suite built for people who ship. Multi-track
-              timeline, a million templates, and AI passes that finish the cut while you
-              watch.
+              Xavier Generation OS is an AI editing suite built for people who ship.
+              Multi-track timeline, 18 browser-rendered Remotion templates, and AI video
+              and image generation wired straight into your cut.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <Link
@@ -149,9 +149,9 @@ function Landing() {
 
             <dl className="mt-14 grid max-w-2xl grid-cols-2 gap-6 sm:grid-cols-4">
               {[
-                ["1M+", "Templates"],
-                ["12K", "Max export"],
-                ["6", "AI engines"],
+                ["18", "Templates"],
+                ["4K", "Max export"],
+                ["3", "AI engines"],
                 ["30s", "Auto-save"],
               ].map(([v, l]) => (
                 <div key={l}>
