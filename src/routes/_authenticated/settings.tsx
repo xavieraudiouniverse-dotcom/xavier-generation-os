@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Check, Sparkles, KeyRound, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { redeemAdminCode } from "@/lib/admin-code.functions";
 import { useAuth } from "@/hooks/useAuth";
 import { PLANS, TIER_LABEL } from "@/lib/pricing";
 
@@ -41,12 +42,14 @@ function Settings() {
 
   const redeem = async () => {
     setBusy(true);
-    const { data, error } = await supabase.rpc("redeem_admin_code", { _code: code.trim() });
-    setBusy(false);
-    if (error || !data) {
+    try {
+      await redeemAdminCode({ data: { code: code.trim() } });
+    } catch {
+      setBusy(false);
       toast.error("That access code is not valid.");
       return;
     }
+    setBusy(false);
     await refreshProfile();
     toast.success("Founder tier unlocked.");
     setCode("");
