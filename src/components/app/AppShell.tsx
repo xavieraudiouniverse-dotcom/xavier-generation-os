@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { LayoutGrid, LibraryBig, Settings, LogOut, Sparkles, Wand2 } from "lucide-react";
+import { LayoutGrid, LibraryBig, Settings, LogOut, Sparkles, Wand2, Image } from "lucide-react";
 import { Logo } from "./Logo";
 import { useAuth } from "@/hooks/useAuth";
 import { TIER_LABEL } from "@/lib/pricing";
@@ -8,6 +8,7 @@ import type { ReactNode } from "react";
 const NAV = [
   { to: "/dashboard", label: "Projects", icon: LayoutGrid },
   { to: "/ai-video", label: "AI Video", icon: Wand2 },
+  { to: "/ai-image", label: "AI Image", icon: Image },
   { to: "/templates", label: "Templates", icon: LibraryBig },
   { to: "/settings", label: "Settings", icon: Settings },
 ] as const;

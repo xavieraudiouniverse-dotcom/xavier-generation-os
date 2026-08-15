@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedAiImageRouteImport } from './routes/_authenticated/ai-image'
 import { Route as AuthenticatedAiVideoRouteImport } from './routes/_authenticated/ai-video'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
@@ -31,6 +32,11 @@ const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAiImageRoute = AuthenticatedAiImageRouteImport.update({
+  id: '/ai-image',
+  path: '/ai-image',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedAiVideoRoute = AuthenticatedAiVideoRouteImport.update({
   id: '/ai-video',
@@ -62,6 +68,7 @@ const AuthenticatedEditorProjectIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/ai-image': typeof AuthenticatedAiImageRoute
   '/ai-video': typeof AuthenticatedAiVideoRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/settings': typeof AuthenticatedSettingsRoute
@@ -71,6 +78,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/ai-image': typeof AuthenticatedAiImageRoute
   '/ai-video': typeof AuthenticatedAiVideoRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/settings': typeof AuthenticatedSettingsRoute
@@ -82,6 +90,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/ai-image': typeof AuthenticatedAiImageRoute
   '/_authenticated/ai-video': typeof AuthenticatedAiVideoRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
@@ -93,6 +102,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/ai-image'
     | '/ai-video'
     | '/dashboard'
     | '/settings'
@@ -102,6 +112,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/ai-image'
     | '/ai-video'
     | '/dashboard'
     | '/settings'
@@ -112,6 +123,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/_authenticated/ai-image'
     | '/_authenticated/ai-video'
     | '/_authenticated/dashboard'
     | '/_authenticated/settings'
@@ -147,6 +159,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/ai-image': {
+      id: '/_authenticated/ai-image'
+      path: '/ai-image'
+      fullPath: '/ai-image'
+      preLoaderRoute: typeof AuthenticatedAiImageRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/ai-video': {
       id: '/_authenticated/ai-video'
@@ -187,6 +206,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAiImageRoute: typeof AuthenticatedAiImageRoute
   AuthenticatedAiVideoRoute: typeof AuthenticatedAiVideoRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
@@ -195,6 +215,7 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAiImageRoute: AuthenticatedAiImageRoute,
   AuthenticatedAiVideoRoute: AuthenticatedAiVideoRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
