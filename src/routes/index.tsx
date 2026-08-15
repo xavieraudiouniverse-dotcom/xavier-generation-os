@@ -238,12 +238,12 @@ function Landing() {
       <section id="ai" className="relative overflow-hidden border-t border-border py-24">
         <div className="absolute inset-0 bg-hero-glow opacity-50" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-          <p className="eyebrow">Six AI engines</p>
+          <p className="eyebrow">Live AI engines</p>
           <h2 className="mt-3 max-w-2xl text-4xl font-bold sm:text-5xl">
             <span className="text-gradient-lux">Director-grade</span> automation.
           </h2>
           <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {AI_TOOLS.map((t, i) => (
+            {AI_FEATURES.map((t, i) => (
               <motion.div
                 key={t.id}
                 initial={{ opacity: 0, scale: 0.97 }}
