@@ -155,5 +155,5 @@ export async function renderCompositionInBrowser({
   encoder.close();
   muxer.finalize();
   const { buffer } = muxer.target as ArrayBufferTarget;
-  return new Blob([buffer], { type: chosen.muxer === "avc" ? "video/mp4" : "video/webm" });
+  return new Blob([buffer], { type: "video/mp4" });
 }

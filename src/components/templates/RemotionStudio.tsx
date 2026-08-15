@@ -163,12 +163,11 @@ function Studio({
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `${template.id}-${Date.now()}.${blob.type.includes("mp4") ? "mp4" : "webm"}`;
+      a.download = `${template.id}-${Date.now()}.mp4`;
       a.click();
       URL.revokeObjectURL(url);
       toast.success("Rendered in your browser — no server needed.");
     } catch (e) {
-      console.error("[remotion-export]", e);
       toast.error(e instanceof Error ? e.message : "Browser render failed.");
     } finally {
       setRendering(false);
