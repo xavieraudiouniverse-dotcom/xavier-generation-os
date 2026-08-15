@@ -13,9 +13,9 @@ import { useEditor, timelineEnd, starterTimeline, type TimelineState } from "@/s
 export const Route = createFileRoute("/_authenticated/ai-video")({
   head: () => ({
     meta: [
-      { title: "AI Video Generator — XAVIER CUT PRO" },
+      { title: "AI Video Generator — Xavier Generation OS" },
       { name: "description", content: "Turn a text prompt into a cinematic AI-generated clip with sound, then drop it straight onto your timeline." },
-      { property: "og:title", content: "AI Video Generator — XAVIER CUT PRO" },
+      { property: "og:title", content: "AI Video Generator — Xavier Generation OS" },
       { property: "og:description", content: "Text to video in one prompt. Generate, preview, and add to your project timeline." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

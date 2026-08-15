@@ -13,9 +13,9 @@ import { useEditor, timelineEnd, starterTimeline, type TimelineState } from "@/s
 export const Route = createFileRoute("/_authenticated/ai-image")({
   head: () => ({
     meta: [
-      { title: "AI Image Generator — XAVIER CUT PRO" },
+      { title: "AI Image Generator — Xavier Generation OS" },
       { name: "description", content: "Generate cinematic stills from a text prompt with FLUX, download them, or drop them onto your timeline as a static clip." },
-      { property: "og:title", content: "AI Image Generator — XAVIER CUT PRO" },
+      { property: "og:title", content: "AI Image Generator — Xavier Generation OS" },
       { property: "og:description", content: "Text to image in one prompt. Generate, download, and add to your project timeline." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
