@@ -50,8 +50,9 @@ function AuthPage() {
 
   const redeem = async () => {
     if (!code.trim()) return false;
-    const { error } = await supabase.rpc("redeem_admin_code", { _code: code.trim() });
-    if (error) {
+    try {
+      await redeemAdminCode({ data: { code: code.trim() } });
+    } catch {
       toast.error("That access code isn't valid.");
       return false;
     }
