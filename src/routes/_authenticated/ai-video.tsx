@@ -73,7 +73,9 @@ function AiVideo() {
     const tick = setInterval(() => setElapsed((e) => e + 1), 1000);
     const run = async () => {
       try {
-        const res = await poll({ data: { id: jobId, projectId: projectId || undefined, prompt } });
+        const res = await poll({
+          data: projectId ? { id: jobId, projectId, prompt } : { id: jobId, prompt },
+        });
         if (!active) return;
         setProgress(res.progress ?? 0);
         if (res.status === "failed") {
