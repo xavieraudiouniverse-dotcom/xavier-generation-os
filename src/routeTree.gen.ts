@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as RemCheckRouteImport } from './routes/rem-check'
 import { Route as AuthenticatedAiImageRouteImport } from './routes/_authenticated/ai-image'
 import { Route as AuthenticatedAiVideoRouteImport } from './routes/_authenticated/ai-video'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
@@ -31,6 +32,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RemCheckRoute = RemCheckRouteImport.update({
+  id: '/rem-check',
+  path: '/rem-check',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedAiImageRoute = AuthenticatedAiImageRouteImport.update({
@@ -68,6 +74,7 @@ const AuthenticatedEditorProjectIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/rem-check': typeof RemCheckRoute
   '/ai-image': typeof AuthenticatedAiImageRoute
   '/ai-video': typeof AuthenticatedAiVideoRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/rem-check': typeof RemCheckRoute
   '/ai-image': typeof AuthenticatedAiImageRoute
   '/ai-video': typeof AuthenticatedAiVideoRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -90,6 +98,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/rem-check': typeof RemCheckRoute
   '/_authenticated/ai-image': typeof AuthenticatedAiImageRoute
   '/_authenticated/ai-video': typeof AuthenticatedAiVideoRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
@@ -102,6 +111,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/rem-check'
     | '/ai-image'
     | '/ai-video'
     | '/dashboard'
@@ -112,6 +122,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/rem-check'
     | '/ai-image'
     | '/ai-video'
     | '/dashboard'
@@ -123,6 +134,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/rem-check'
     | '/_authenticated/ai-image'
     | '/_authenticated/ai-video'
     | '/_authenticated/dashboard'
@@ -135,6 +147,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  RemCheckRoute: typeof RemCheckRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rem-check': {
+      id: '/rem-check'
+      path: '/rem-check'
+      fullPath: '/rem-check'
+      preLoaderRoute: typeof RemCheckRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/ai-image': {
@@ -230,6 +250,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  RemCheckRoute: RemCheckRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
