@@ -249,8 +249,8 @@ export type Database = {
         }
         Returns: boolean
       }
-      redeem_admin_code: {
-        Args: { _code: string }
+      redeem_admin_code_for: {
+        Args: { _code: string; _user_id: string }
         Returns: {
           admin_code_used: boolean
           avatar_url: string | null

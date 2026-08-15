@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Logo } from "@/components/app/Logo";
 import { useAuth } from "@/hooks/useAuth";
+import { redeemAdminCode } from "@/lib/admin-code.functions";
 
 const searchSchema = z.object({
   mode: z.enum(["login", "register"]).optional(),
@@ -50,8 +51,9 @@ function AuthPage() {
 
   const redeem = async () => {
     if (!code.trim()) return false;
-    const { error } = await supabase.rpc("redeem_admin_code", { _code: code.trim() });
-    if (error) {
+    try {
+      await redeemAdminCode({ data: { code: code.trim() } });
+    } catch {
       toast.error("That access code isn't valid.");
       return false;
     }
