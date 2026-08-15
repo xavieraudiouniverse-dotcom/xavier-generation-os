@@ -5,7 +5,6 @@ import {
 } from "lucide-react";
 import { Logo } from "@/components/app/Logo";
 import { PLANS } from "@/lib/pricing";
-import { AI_TOOLS } from "@/lib/ai-tools";
 import { useAuth } from "@/hooks/useAuth";
 
 export const Route = createFileRoute("/")({
@@ -15,13 +14,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Premium AI video editing studio with a multi-track timeline, 1M+ templates, AI auto-edit and 4K export. Members-only plans from $4.99/mo.",
+          "Premium AI video editing studio with a multi-track timeline, 18 Remotion templates, AI video and image generation, and 4K export. Members-only plans from $4.99/mo.",
       },
       { property: "og:title", content: "Xavier Generation OS — Premium AI Video Editing Studio" },
       {
         property: "og:description",
         content:
-          "Premium AI video editing studio with a multi-track timeline, 1M+ templates, AI auto-edit and 4K export. Members-only plans from $4.99/mo.",
+          "Premium AI video editing studio with a multi-track timeline, 18 Remotion templates, AI video and image generation, and 4K export. Members-only plans from $4.99/mo.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -44,10 +43,34 @@ const accentText: Record<string, string> = {
 const FEATURES = [
   { icon: Layers, title: "Multi-track timeline", body: "Video, audio, text and effects lanes with magnetic snap and ripple delete.", accent: "neon" },
   { icon: Scissors, title: "Razor-fast trimming", body: "Split at playhead, ripple edits, speed ramps and full keyframe control.", accent: "magenta" },
-  { icon: Gauge, title: "Beat-locked audio", body: "Waveforms with automatic beat detection markers so every cut lands.", accent: "gold" },
-  { icon: Film, title: "1M+ templates", body: "Social, cinematic, business, gaming, music and fashion — filtered instantly.", accent: "neon" },
-  { icon: Zap, title: "Instant AI passes", body: "Auto-edit, style transfer, captions, background removal and generated score.", accent: "magenta" },
-  { icon: Globe, title: "Platform presets", body: "TikTok 9:16, YouTube 16:9, Instagram 4:5 — mastered up to 12K.", accent: "gold" },
+  { icon: Gauge, title: "Audio waveforms", body: "Waveform lanes with beat markers so every cut lands on the grid.", accent: "gold" },
+  { icon: Film, title: "18 Remotion templates", body: "Captions, effects, audio visualisers, product and social — editable props, live preview.", accent: "neon" },
+  { icon: Zap, title: "AI video + image", body: "Generate clips with Veo 3 or Seedance 2.0 and stills with FLUX, straight into your timeline.", accent: "magenta" },
+  { icon: Globe, title: "Platform presets", body: "TikTok 9:16, YouTube 16:9, Instagram 1:1 — exported up to 4K.", accent: "gold" },
+];
+
+const AI_FEATURES = [
+  {
+    id: "ai-video",
+    name: "AI Video",
+    description: "Text-to-video with Veo 3 (Google) or Seedance 2.0 (ByteDance), saved to your media bin.",
+    icon: Film,
+    accent: "neon",
+  },
+  {
+    id: "ai-image",
+    name: "AI Image",
+    description: "FLUX text-to-image in 16:9, 9:16 or 1:1 — download it or drop it on the timeline.",
+    icon: Zap,
+    accent: "magenta",
+  },
+  {
+    id: "templates",
+    name: "Template studio",
+    description: "Remotion compositions rendered in your browser, with props prefilled from your project.",
+    icon: Layers,
+    accent: "gold",
+  },
 ];
 
 function Landing() {
