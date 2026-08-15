@@ -31,7 +31,10 @@ function Settings() {
     setBusy(true);
     const { error } = await supabase.from("profiles").update({ display_name: name }).eq("id", profile.id);
     setBusy(false);
-    if (error) return toast.error("Could not save your profile.");
+    if (error) {
+      toast.error("Could not save your profile.");
+      return;
+    }
     await refreshProfile();
     toast.success("Profile updated.");
   };
@@ -40,7 +43,10 @@ function Settings() {
     setBusy(true);
     const { data, error } = await supabase.rpc("redeem_admin_code", { _code: code.trim() });
     setBusy(false);
-    if (error || !data) return toast.error("That access code is not valid.");
+    if (error || !data) {
+      toast.error("That access code is not valid.");
+      return;
+    }
     await refreshProfile();
     toast.success("Founder tier unlocked.");
     setCode("");
