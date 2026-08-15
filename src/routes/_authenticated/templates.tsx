@@ -12,9 +12,9 @@ import { starterTimeline } from "@/store/editor";
 export const Route = createFileRoute("/_authenticated/templates")({
   head: () => ({
     meta: [
-      { title: "Template Library — XAVIER CUT PRO" },
+      { title: "Template Library — Xavier Generation OS" },
       { name: "description", content: "Browse 1,000,000+ video templates across Social, Cinematic, Business, Gaming, Music and Fashion." },
-      { property: "og:title", content: "Template Library — XAVIER CUT PRO" },
+      { property: "og:title", content: "Template Library — Xavier Generation OS" },
       { property: "og:description", content: "1M+ templates, filtered by platform, duration, style and mood." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

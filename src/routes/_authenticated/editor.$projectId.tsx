@@ -17,9 +17,9 @@ import { ExportDialog } from "@/components/editor/ExportDialog";
 export const Route = createFileRoute("/_authenticated/editor/$projectId")({
   head: () => ({
     meta: [
-      { title: "Editor — XAVIER CUT PRO" },
+      { title: "Editor — Xavier Generation OS" },
       { name: "description", content: "Multi-track AI timeline editor with keyframes, speed ramps, beat detection and 4K export." },
-      { property: "og:title", content: "Editor — XAVIER CUT PRO" },
+      { property: "og:title", content: "Editor — Xavier Generation OS" },
       { property: "og:description", content: "The cinematic AI timeline. Cut, style, score and export." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

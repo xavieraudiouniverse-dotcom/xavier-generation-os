@@ -10,10 +10,10 @@ import { starterTimeline } from "@/store/editor";
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
-      { title: "Projects — XAVIER CUT PRO" },
-      { name: "description", content: "Your Xavier Cut Pro edit bay: recent projects, new sequences and render history." },
-      { property: "og:title", content: "Projects — XAVIER CUT PRO" },
-      { property: "og:description", content: "Your Xavier Cut Pro edit bay." },
+      { title: "Projects — Xavier Generation OS" },
+      { name: "description", content: "Your Xavier Generation OS edit bay: recent projects, new sequences and render history." },
+      { property: "og:title", content: "Projects — Xavier Generation OS" },
+      { property: "og:description", content: "Your Xavier Generation OS edit bay." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

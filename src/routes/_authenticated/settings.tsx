@@ -10,9 +10,9 @@ import { PLANS, TIER_LABEL } from "@/lib/pricing";
 export const Route = createFileRoute("/_authenticated/settings")({
   head: () => ({
     meta: [
-      { title: "Settings & Billing — XAVIER CUT PRO" },
-      { name: "description", content: "Manage your profile, subscription tier and Founder access code for XAVIER CUT PRO." },
-      { property: "og:title", content: "Settings & Billing — XAVIER CUT PRO" },
+      { title: "Settings & Billing — Xavier Generation OS" },
+      { name: "description", content: "Manage your profile, subscription tier and Founder access code for Xavier Generation OS." },
+      { property: "og:title", content: "Settings & Billing — Xavier Generation OS" },
       { property: "og:description", content: "Profile, plan and billing controls." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

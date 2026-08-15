@@ -18,9 +18,9 @@ export const Route = createFileRoute("/auth")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Sign in — XAVIER CUT PRO" },
-      { name: "description", content: "Sign in or create your Xavier Cut Pro account. Founder access codes accepted." },
-      { property: "og:title", content: "Sign in — XAVIER CUT PRO" },
+      { title: "Sign in — Xavier Generation OS" },
+      { name: "description", content: "Sign in or create your Xavier Generation OS account. Founder access codes accepted." },
+      { property: "og:title", content: "Sign in — Xavier Generation OS" },
       { property: "og:description", content: "Members-only AI video editing studio." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

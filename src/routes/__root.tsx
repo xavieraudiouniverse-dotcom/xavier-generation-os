@@ -79,17 +79,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "XAVIER CUT PRO — AI Video Editing Studio" },
+      { title: "Xavier Generation OS — AI Video Editing Studio" },
       {
         name: "description",
         content:
-          "Premium AI video editing in the browser. Multi-track timeline, 1M+ templates, one-click AI auto-edit. Members only.",
+          "Premium AI video editing studio with a multi-track timeline, 1M+ templates, AI auto-edit and 4K export. Members-only plans from $4.99/mo.",
       },
       { name: "author", content: "Xavier Cut Pro" },
-      { property: "og:title", content: "XAVIER CUT PRO — AI Video Editing Studio" },
+      { property: "og:title", content: "Xavier Generation OS — AI Video Editing Studio" },
       {
         property: "og:description",
-        content: "Hollywood-grade AI editing in your browser. Members only.",
+        content:
+          "Premium AI video editing studio with a multi-track timeline, 1M+ templates, AI auto-edit and 4K export. Members-only plans from $4.99/mo.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

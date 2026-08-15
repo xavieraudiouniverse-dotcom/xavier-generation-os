@@ -11,16 +11,17 @@ import { useAuth } from "@/hooks/useAuth";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "XAVIER CUT PRO — Premium AI Video Editing Studio" },
+      { title: "Xavier Generation OS — Premium AI Video Editing Studio" },
       {
         name: "description",
         content:
-          "Members-only AI video editor. Multi-track timeline, 1M+ templates, AI auto-edit, 12K export. Plans from $4.99/mo.",
+          "Premium AI video editing studio with a multi-track timeline, 1M+ templates, AI auto-edit and 4K export. Members-only plans from $4.99/mo.",
       },
-      { property: "og:title", content: "XAVIER CUT PRO — Premium AI Video Editing Studio" },
+      { property: "og:title", content: "Xavier Generation OS — Premium AI Video Editing Studio" },
       {
         property: "og:description",
-        content: "Members-only AI video editor. Multi-track timeline, 1M+ templates, 12K export.",
+        content:
+          "Premium AI video editing studio with a multi-track timeline, 1M+ templates, AI auto-edit and 4K export. Members-only plans from $4.99/mo.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
