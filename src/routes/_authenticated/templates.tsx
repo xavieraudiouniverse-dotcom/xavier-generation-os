@@ -14,9 +14,9 @@ export const Route = createFileRoute("/_authenticated/templates")({
   head: () => ({
     meta: [
       { title: "Template Library — Xavier Generation OS" },
-      { name: "description", content: "Browse 1,000,000+ video templates across Social, Cinematic, Business, Gaming, Music and Fashion." },
+      { name: "description", content: "Browse 18 Remotion templates across Captions, Effects, Audio, Product and Social — editable props with live preview." },
       { property: "og:title", content: "Template Library — Xavier Generation OS" },
-      { property: "og:description", content: "1M+ templates, filtered by platform, duration, style and mood." },
+      { property: "og:description", content: "18 Remotion templates, filtered by category, format and style." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -149,7 +149,7 @@ function Templates() {
     <div className="mx-auto max-w-[1600px] px-4 py-10 sm:px-6">
       <p className="eyebrow">Library</p>
       <h1 className="mt-2 text-4xl font-bold">
-        <span className="text-gradient-lux">1,000,000+</span> templates
+        <span className="text-gradient-lux">18</span> templates
       </h1>
 
       <div className="mt-6 flex w-fit gap-1 rounded-full border border-border bg-surface p-1">
