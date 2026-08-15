@@ -7,7 +7,7 @@ import { Sparkles, Loader2, Film, ArrowRight, Wand2 } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
-import { startVeoJob, pollVeoJob } from "@/lib/veo.functions";
+import { startVideoJob, pollVideoJob, MODEL_LABEL, type VideoModel } from "@/lib/veo.functions";
 import { useEditor, timelineEnd, starterTimeline, type TimelineState } from "@/store/editor";
 
 export const Route = createFileRoute("/_authenticated/ai-video")({
@@ -33,10 +33,12 @@ const PRESETS = [
 function AiVideo() {
   const navigate = useNavigate();
   const { profile, entitled } = useAuth();
-  const start = useServerFn(startVeoJob);
-  const poll = useServerFn(pollVeoJob);
+  const start = useServerFn(startVideoJob);
+  const poll = useServerFn(pollVideoJob);
 
   const [prompt, setPrompt] = useState("");
+  const [model, setModel] = useState<VideoModel>("veo");
+  const [doneModel, setDoneModel] = useState<VideoModel>("veo");
   const [orientation, setOrientation] = useState<"landscape" | "portrait">("landscape");
   const [seconds, setSeconds] = useState<"4" | "6" | "8">("8");
   const [jobId, setJobId] = useState<string | null>(null);
@@ -86,6 +88,7 @@ function AiVideo() {
         if (res.status === "completed") {
           setVideoUrl(res.url);
           setDonePrompt(prompt);
+          setDoneModel(res.model);
           setJobId(null);
           toast.success("Your clip is ready.");
         }
@@ -114,7 +117,7 @@ function AiVideo() {
     setProgress(0);
     setElapsed(0);
     try {
-      const job = await start({ data: { prompt, orientation, seconds } });
+      const job = await start({ data: { prompt, model, orientation, seconds } });
       setJobId(job.id);
     } catch (e) {
       toast.error(e instanceof Error ? e.message : "Could not start generation.");
