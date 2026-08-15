@@ -40,9 +40,9 @@ async function rasterize(el: HTMLElement, width: number, height: number, canvas:
     </foreignObject>
   </svg>`;
 
-  const blob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  try {
+  // A data: URL keeps the canvas origin-clean; blob: SVGs are treated as tainted.
+  const url = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+  {
     const img = new Image();
     img.decoding = "sync";
     await new Promise<void>((resolve, reject) => {
@@ -54,8 +54,6 @@ async function rasterize(el: HTMLElement, width: number, height: number, canvas:
     ctx.fillStyle = "#000";
     ctx.fillRect(0, 0, width, height);
     ctx.drawImage(img, 0, 0, width, height);
-  } finally {
-    URL.revokeObjectURL(url);
   }
 }
 
