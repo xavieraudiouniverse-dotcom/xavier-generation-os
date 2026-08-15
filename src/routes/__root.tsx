@@ -83,14 +83,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Premium AI video editing studio with a multi-track timeline, 1M+ templates, AI auto-edit and 4K export. Members-only plans from $4.99/mo.",
+          "Premium AI video editing studio with a multi-track timeline, 18 Remotion templates, AI video and image generation, and 4K export. Members-only plans from $4.99/mo.",
       },
-      { name: "author", content: "Xavier Cut Pro" },
+      { name: "author", content: "Xavier Generation OS" },
       { property: "og:title", content: "Xavier Generation OS — AI Video Editing Studio" },
       {
         property: "og:description",
         content:
-          "Premium AI video editing studio with a multi-track timeline, 1M+ templates, AI auto-edit and 4K export. Members-only plans from $4.99/mo.",
+          "Premium AI video editing studio with a multi-track timeline, 18 Remotion templates, AI video and image generation, and 4K export. Members-only plans from $4.99/mo.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
