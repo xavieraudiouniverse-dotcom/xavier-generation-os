@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { TIER_RANK, TIER_LABEL, type TierId } from "@/lib/pricing";
 import { starterTimeline } from "@/store/editor";
+import { RemotionGallery } from "@/components/templates/RemotionStudio";
 
 export const Route = createFileRoute("/_authenticated/templates")({
   head: () => ({
@@ -69,6 +70,7 @@ function Chips({
 function Templates() {
   const { profile, entitled } = useAuth();
   const navigate = useNavigate();
+  const [engine, setEngine] = useState<"remotion" | "library">("remotion");
   const [q, setQ] = useState("");
   const [cat, setCat] = useState("All");
   const [platform, setPlatform] = useState("All");
@@ -85,6 +87,19 @@ function Templates() {
         .order("name");
       if (error) throw error;
       return data as Template[];
+    },
+  });
+
+  const projects = useQuery({
+    queryKey: ["projects", "for-remotion"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("id,title")
+        .order("updated_at", { ascending: false })
+        .limit(50);
+      if (error) throw error;
+      return data as { id: string; title: string }[];
     },
   });
 
@@ -137,6 +152,34 @@ function Templates() {
         <span className="text-gradient-lux">1,000,000+</span> templates
       </h1>
 
+      <div className="mt-6 flex w-fit gap-1 rounded-full border border-border bg-surface p-1">
+        {(
+          [
+            ["remotion", "Remotion engine"],
+            ["library", "Classic library"],
+          ] as const
+        ).map(([id, label]) => (
+          <button
+            key={id}
+            onClick={() => setEngine(id)}
+            className={`rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
+              engine === id ? "bg-neon text-neon-foreground" : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {engine === "remotion" ? (
+        <div className="mt-6">
+          <RemotionGallery
+            projects={projects.data ?? []}
+            userName={profile?.display_name ?? ""}
+          />
+        </div>
+      ) : (
+      <>
       <div className="panel mt-8 space-y-5 p-5">
         <div className="flex items-center gap-3 rounded-md border border-border bg-stage px-3 py-2.5">
           <Search className="size-4 text-muted-foreground" />
@@ -207,6 +250,8 @@ function Templates() {
           );
         })}
       </div>
+      </>
+      )}
     </div>
   );
 }
