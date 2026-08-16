@@ -107,8 +107,8 @@ export function AiPanel() {
       }
 
       setStyleStatus("Starting restyle…");
-      const job = await startStyleTransferJob === null ? null : await startStyle({ data: { sourcePath, style } });
-      if (!job) throw new Error("Could not start the restyle.");
+      const job = await startStyle({ data: { sourcePath, style } });
+      if (!job?.id) throw new Error("Could not start the restyle.");
 
       const deadline = Date.now() + 4 * 60 * 1000;
       for (;;) {
