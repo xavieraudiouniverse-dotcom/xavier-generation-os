@@ -33,11 +33,12 @@ export const AI_TOOLS: AiTool[] = [
   {
     id: "style",
     name: "Style Transfer",
-    description: "Cinematic look transfer across your footage. Not live yet.",
+    description:
+      "Restyle a frame from your clip using AI — the styled result is added as a new image asset, not a full video re-render.",
     icon: Palette,
     accent: "magenta",
     runLabel: "Rendering style pass",
-    status: "coming-soon",
+    status: "live",
   },
   {
     id: "captions",
@@ -76,4 +77,26 @@ export const AI_TOOLS: AiTool[] = [
     runLabel: "Scanning posts",
     status: "coming-soon",
   },
+];
+
+/** Trimmed to the looks that hold up as img2img prompts. */
+export const STYLE_PRESETS = [
+  "Ghibli animation",
+  "Cyberpunk neon",
+  "Van Gogh oil painting",
+  "Wes Anderson symmetry",
+  "Blade Runner 2049",
+  "Film noir",
+  "Kodak Portra 400",
+  "Cinestill 800T night",
+  "Anime cel shading",
+  "Vaporwave",
+  "Super 8 film",
+  "VHS analog",
+  "Technicolor",
+  "Teal and orange blockbuster",
+  "Comic ink",
+  "Watercolor",
+  "Infrared",
+  "Monochrome silver halide",
 ];
