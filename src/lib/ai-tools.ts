@@ -15,93 +15,65 @@ export type AiTool = {
   icon: LucideIcon;
   accent: "neon" | "magenta" | "gold";
   runLabel: string;
-  duration: number;
+  /** Only tools marked "live" perform real work. Everything else is not shipped yet. */
+  status: "live" | "coming-soon";
 };
 
 export const AI_TOOLS: AiTool[] = [
   {
     id: "auto-edit",
-    name: "AI Auto-Edit",
-    description: "One click. Xavier watches your footage and cuts the story.",
+    name: "Quick Cut Helper",
+    description:
+      "Splits the clip under the playhead and marks tempo beats on the timeline. Rule-based — no footage analysis.",
     icon: Wand2,
     accent: "neon",
-    runLabel: "Analyzing footage",
-    duration: 3200,
+    runLabel: "Cutting timeline",
+    status: "live",
   },
   {
     id: "style",
     name: "Style Transfer",
-    description: "50+ looks — Ghibli, Nolan, Cyberpunk, Van Gogh and more.",
+    description: "Cinematic look transfer across your footage. Not live yet.",
     icon: Palette,
     accent: "magenta",
     runLabel: "Rendering style pass",
-    duration: 3800,
+    status: "coming-soon",
   },
   {
     id: "captions",
     name: "Auto Captions",
-    description: "Transcribe and drop animated, beat-timed subtitles.",
+    description: "Transcribe audio and drop animated subtitles. Not live yet.",
     icon: Captions,
     accent: "gold",
     runLabel: "Transcribing audio",
-    duration: 2600,
+    status: "coming-soon",
   },
   {
     id: "bg-remove",
     name: "Background Remover",
-    description: "Instant green screen without the green screen.",
+    description: "Subject matting without a green screen. Not live yet.",
     icon: Scissors,
     accent: "neon",
     runLabel: "Matting subject",
-    duration: 3000,
+    status: "coming-soon",
   },
   {
     id: "ai-music",
     name: "AI Music",
-    description: "Describe a mood, get a scored track that fits your cut.",
+    description: "Generate a scored track from a mood prompt. Not live yet.",
     icon: Music4,
     accent: "magenta",
     runLabel: "Composing track",
-    duration: 3400,
+    status: "coming-soon",
   },
   {
     id: "trends",
     name: "Trend Predictor",
-    description: "What's about to blow up, by platform and format.",
+    description:
+      "Platform-by-platform format forecasting. Not live yet — no trend data source is connected.",
     icon: TrendingUp,
     accent: "gold",
-    runLabel: "Scanning 4.2M posts",
-    duration: 2200,
+    runLabel: "Scanning posts",
+    status: "coming-soon",
   },
 ];
-
-export const STYLE_PRESETS = [
-  "Ghibli", "Nolan", "Cyberpunk", "Van Gogh", "Wes Anderson", "Blade Runner",
-  "Kodak 2383", "Noir", "Fincher", "Villeneuve", "Vaporwave", "Anime Cel",
-  "Super 8", "VHS", "Technicolor", "Bleach Bypass", "Teal & Orange", "Moonlight",
-  "Sin City", "Matrix", "Dune", "Pixar", "Comic Ink", "Oil Paint",
-  "Watercolor", "Pencil", "Neon Tokyo", "Miami 84", "Desert Gold", "Arctic",
-  "Infrared", "Thermal", "Glitch", "Datamosh", "Halation", "Bloom",
-  "Cross Process", "Polaroid", "Cinestill 800T", "Portra 400", "Ektachrome",
-  "Grainy 16mm", "IMAX", "Dolby Vision", "Silver Halide", "Duotone",
-  "Chromatic", "Holographic", "Prism", "Analog Dream", "Studio Ghibli Night",
-];
-
-export const AI_MUSIC_MOODS = [
-  "Cinematic tension", "Lo-fi study", "Trap banger", "Epic orchestral",
-  "Dreamy synthwave", "Corporate uplift", "Dark ambient", "Feel-good pop",
-];
-
-export const TREND_FEED = [
-  { format: "Vertical POV cold open", platform: "TikTok", growth: 214, heat: "Peaking in 6 days" },
-  { format: "Silent-hook text intro", platform: "Instagram", growth: 168, heat: "Rising fast" },
-  { format: "Split-screen reaction", platform: "YouTube", growth: 132, heat: "Stable" },
-  { format: "AI style-morph transition", platform: "TikTok", growth: 296, heat: "Explosive" },
-  { format: "Micro-doc 60s", platform: "YouTube", growth: 87, heat: "Rising" },
-  { format: "Product ASMR loop", platform: "Instagram", growth: 121, heat: "Peaking now" },
-];
-
-/** Mock AI executor with realistic latency. */
-export function runMockAi<T>(payload: T, ms: number): Promise<T> {
-  return new Promise((resolve) => setTimeout(() => resolve(payload), ms));
-}
