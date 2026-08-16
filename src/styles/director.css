@@ -1,0 +1,11 @@
+.director-modal-backdrop { position: fixed; left:0; right:0; top:0; bottom:0; display:flex; align-items:center; justify-content:center; background: rgba(3,6,12,0.6); z-index: 2000; }
+.director-modal { width: 980px; max-width: calc(100% - 40px); background: linear-gradient(180deg, #061018, #0b0c10); border-radius: 12px; padding: 16px; box-shadow: 0 30px 80px rgba(2,6,12,0.7); border: 1px solid rgba(255,255,255,0.04); color: var(--text); }
+.director-header { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.director-actions { display:flex; gap:8px; align-items:center; }
+.director-body { margin-top: 12px; }
+.variants-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.variant-card { background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.18)); padding:12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.03); }
+.json-preview { background: rgba(0,0,0,0.28); padding: 12px; border-radius: 8px; max-height: 260px; overflow:auto; color: var(--muted); }
+.preview-area { min-height: 200px; padding: 12px; border-radius: 8px; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.18)); }
+.mini-btn { background:transparent; border:1px solid rgba(255,255,255,0.03); color:var(--muted); padding:6px 8px; border-radius:8px; cursor:pointer; }
+.btn { padding:8px 12px; border-radius:8px; background: linear-gradient(90deg,var(--neon),var(--primary)); border:none; color:#041018; font-weight:700; cursor:pointer; }
